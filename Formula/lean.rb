@@ -10,13 +10,14 @@ class Lean < Formula
     sha256 "ac9fe7e4f2c1ea33dc6af5dada8c662728f350cad459c69cd833980a92d93fb1" => :el_capitan
   end
 
+  option "with-boost", "Compile using boost"
+
   # Required
   depends_on "gmp"
   depends_on "mpfr"
   depends_on "lua"
   depends_on "ninja"
   depends_on "cmake" => :build
-  option     "with-boost", "Compile using boost"
   depends_on "boost" => [:build, :optional]
 
   def install
