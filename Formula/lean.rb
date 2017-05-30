@@ -26,10 +26,6 @@ class Lean < Formula
             "-DLIBRARY_DIR=./"]
     args << "-DBOOST=ON" if build.with? "boost"
     mkdir "build" do
-      system "curl", "-O", "-L", "https://github.com/leanprover/emacs-dependencies/archive/master.zip"
-      system "unzip", "master.zip"
-      mv "emacs-dependencies-master", "../src/emacs/dependencies"
-      rm "master.zip"
       system "cmake", "../src", *args
       system "ninja", "clean"
       system "ninja"
@@ -43,23 +39,6 @@ class Lean < Formula
 
     To use the Lean Emacs mode, you need to put the following lines in
     your .emacs file:
-      (require 'package)
-      (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-      (when (< emacs-major-version 24)
-        (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-      (package-initialize)
-
-      ;; Install required/optional packages for lean-mode
-      (defvar lean-mode-required-packages
-        '(company dash dash-functional flycheck f
-                  fill-column-indicator s mmm-mode))
-      (let ((need-to-refresh t))
-        (dolist (p lean-mode-required-packages)
-          (when (not (package-installed-p p))
-            (when need-to-refresh
-              (package-refresh-contents)
-              (setq need-to-refresh nil))
-            (package-install p))))
 
       ;; Set up lean-root path
       (setq lean-rootdir "/usr/local")
