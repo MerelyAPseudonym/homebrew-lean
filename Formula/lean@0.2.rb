@@ -1,13 +1,17 @@
-class Lean < Formula
+class LeanAT02 < Formula
   desc "Interactive, automatable, dependently-typed theorem prover"
   homepage "https://leanprover.github.io"
-  url "https://github.com/leanprover/lean/archive/v3.0.0.tar.gz"
+  url "https://github.com/leanprover/lean2.git",
+      :revision => "c73b2860d5211187e9aa1039d1a49dcabdca4292"
+  version "0.2.0.20160602210703.gitc73b2860d5211187e9aa1039d1a49dcabdca4292"
 
   bottle do
     root_url "https://dl.bintray.com/lean/lean"
     sha256 "329689bfef46678547dca02ccc637ed7cd37f6831e0577aa75dc8af0c3231345" => :yosemite
     sha256 "ac9fe7e4f2c1ea33dc6af5dada8c662728f350cad459c69cd833980a92d93fb1" => :el_capitan
   end
+
+  keg_only :versioned_formula
 
   option "with-boost", "Compile using boost"
 
