@@ -14,7 +14,7 @@ class Lean < Formula
   # Required
   depends_on "gmp"
   depends_on "mpfr"
-  depends_on "ninja"
+  depends_on "ninja" => :build
   depends_on "cmake" => :build
   depends_on "boost" => [:build, :optional]
 
