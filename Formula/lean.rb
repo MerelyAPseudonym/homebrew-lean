@@ -2,6 +2,7 @@ class Lean < Formula
   desc "Interactive, automatable, dependently-typed theorem prover"
   homepage "https://leanprover.github.io"
   url "https://github.com/leanprover/lean/archive/v3.0.0.tar.gz"
+  sha256 "8eed2fed8158d87521552df687956f8a9b984bfae6e27f8c0fb86b885b93c851"
 
   bottle do
     root_url "https://dl.bintray.com/lean/lean"
