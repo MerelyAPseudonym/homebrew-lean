@@ -10,14 +10,11 @@ class Lean < Formula
     sha256 "ac9fe7e4f2c1ea33dc6af5dada8c662728f350cad459c69cd833980a92d93fb1" => :el_capitan
   end
 
-  option "with-boost", "Compile using boost"
-
   # Required
   depends_on "gmp"
   depends_on "mpfr"
   depends_on "ninja" => :build
   depends_on "cmake" => :build
-  depends_on "boost" => [:build, :optional]
 
   def install
     args = ["-DCMAKE_INSTALL_PREFIX=#{prefix}",
@@ -25,7 +22,6 @@ class Lean < Formula
             "-DTCMALLOC=OFF",
             "-GNinja",
             "-DLIBRARY_DIR=./"]
-    args << "-DBOOST=ON" if build.with? "boost"
     mkdir "build" do
       system "cmake", "../src", *args
       system "ninja", "clean"
